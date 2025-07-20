@@ -33,23 +33,12 @@ html(lang='pt-br')
                             a.nav-link.active(aria-current='page' href='#!') Início
                         li.nav-item
                             a.nav-link(href='/sobre.html') Sobre
-                        li.nav-item.dropdown
-                            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-                                | Loja
-                            ul.dropdown-menu(aria-labelledby='navbarDropdown')
-                                li
-                                    a.dropdown-item(href='#!') Todos Produtos
-                                li
-                                    hr.dropdown-divider
-                                li
-                                    a.dropdown-item(href='#!') Itens Populares
-                                li
-                                    a.dropdown-item(href='#!') Novidades
+                        
                     form.d-flex
-                        button.btn.btn-outline-dark(type='submit')
+                        a.btn.btn-outline-dark(href='/carrinho.html')
                             i.bi-cart-fill.me-1
                             | Carrinho
-                            span.badge.bg-dark.text-white.ms-1.rounded-pill 0
+                            span#cart-count.badge.bg-dark.text-white.ms-1.rounded-pill 0
 
         // Header
         header.py-5(style="background-color: #F48CA7;")
@@ -65,163 +54,123 @@ html(lang='pt-br')
                     .col.mb-5
                         .card.h-100
                             // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
+                            img.card-img-top(src='/assets/001.jpeg', alt='...')
                             // Product details
                             .card-body.p-4
                                 .text-center
                                     // Product name
-                                    h5.fw-bolder Fancy Product
+                                    h5.fw-bolder Tapete Redondo em Crochê
                                     // Product price
-                                    | $40.00 - $80.00
+                                    | R$40.00
                             // Product actions
                             .card-footer.p-4.pt-0.border-top-0.bg-transparent
                                 .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') View options
-                    .col.mb-5
-                        .card.h-100
-                            // Sale badge
-                            .badge.bg-dark.text-white.position-absolute(style='top: 0.5rem; right: 0.5rem;') Sale
-                            // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
-                            // Product details
-                            .card-body.p-4
-                                .text-center
-                                    // Product name
-                                    h5.fw-bolder Special Item
-                                    // Product reviews
-                                    .d-flex.justify-content-center.small.text-warning.mb-2
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                    // Product price
-                                    span.text-muted.text-decoration-line-through $20.00
-                                    | $18.00
-                            // Product actions
-                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
-                                .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
-                    .col.mb-5
-                        .card.h-100
-                            // Sale badge
-                            .badge.bg-dark.text-white.position-absolute(style='top: 0.5rem; right: 0.5rem;') Sale
-                            // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
-                            // Product details
-                            .card-body.p-4
-                                .text-center
-                                    // Product name
-                                    h5.fw-bolder Sale Item
-                                    // Product price
-                                    span.text-muted.text-decoration-line-through $50.00
-                                    | $25.00
-                            // Product actions
-                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
-                                .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='1') Add to cart
                     .col.mb-5
                         .card.h-100
                             // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
+                            img.card-img-top(src='/assets/002.jpeg', alt='...')
                             // Product details
                             .card-body.p-4
                                 .text-center
                                     // Product name
-                                    h5.fw-bolder Popular Item
-                                    // Product reviews
-                                    .d-flex.justify-content-center.small.text-warning.mb-2
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
+                                    h5.fw-bolder Bolsa em Crochê
                                     // Product price
-                                    | $40.00
+                                    | R$40.00
                             // Product actions
                             .card-footer.p-4.pt-0.border-top-0.bg-transparent
                                 .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
-                    .col.mb-5
-                        .card.h-100
-                            // Sale badge
-                            .badge.bg-dark.text-white.position-absolute(style='top: 0.5rem; right: 0.5rem;') Sale
-                            // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
-                            // Product details
-                            .card-body.p-4
-                                .text-center
-                                    // Product name
-                                    h5.fw-bolder Sale Item
-                                    // Product price
-                                    span.text-muted.text-decoration-line-through $50.00
-                                    | $25.00
-                            // Product actions
-                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
-                                .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='2') Add to cart
                     .col.mb-5
                         .card.h-100
                             // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
+                            img.card-img-top(src='/assets/003.jpeg', alt='...')
                             // Product details
                             .card-body.p-4
                                 .text-center
                                     // Product name
-                                    h5.fw-bolder Fancy Product
+                                    h5.fw-bolder Carteira de mão em Crochê
                                     // Product price
-                                    | $120.00 - $280.00
+                                    | R$40.00
                             // Product actions
                             .card-footer.p-4.pt-0.border-top-0.bg-transparent
                                 .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') View options
-                    .col.mb-5
-                        .card.h-100
-                            // Sale badge
-                            .badge.bg-dark.text-white.position-absolute(style='top: 0.5rem; right: 0.5rem;') Sale
-                            // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
-                            // Product details
-                            .card-body.p-4
-                                .text-center
-                                    // Product name
-                                    h5.fw-bolder Special Item
-                                    // Product reviews
-                                    .d-flex.justify-content-center.small.text-warning.mb-2
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                    // Product price
-                                    span.text-muted.text-decoration-line-through $20.00
-                                    | $18.00
-                            // Product actions
-                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
-                                .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='3') Add to cart
                     .col.mb-5
                         .card.h-100
                             // Product image
-                            img.card-img-top(src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg', alt='...')
+                            img.card-img-top(src='/assets/004.jpeg', alt='...')
                             // Product details
                             .card-body.p-4
                                 .text-center
                                     // Product name
-                                    h5.fw-bolder Popular Item
-                                    // Product reviews
-                                    .d-flex.justify-content-center.small.text-warning.mb-2
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
-                                        .bi-star-fill
+                                    h5.fw-bolder Tapete Retangular em Crochê
                                     // Product price
-                                    | $40.00
+                                    | R$40.00
                             // Product actions
                             .card-footer.p-4.pt-0.border-top-0.bg-transparent
                                 .text-center
-                                    a.btn.btn-outline-dark.mt-auto(href='#') Add to cart
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='4') Add to cart
+                    .col.mb-5
+                        .card.h-100
+                            // Product image
+                            img.card-img-top(src='/assets/006.jpeg', alt='...')
+                            // Product details
+                            .card-body.p-4
+                                .text-center
+                                    // Product name
+                                    h5.fw-bolder Caminho de Mesa em Crochê
+                                    // Product price
+                                    | R$40.00
+                            // Product actions
+                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
+                                .text-center
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='5') Add to cart
+                    .col.mb-5
+                        .card.h-100
+                            // Product image
+                            img.card-img-top(src='/assets/006.jpeg', alt='...')
+                            // Product details
+                            .card-body.p-4
+                                .text-center
+                                    // Product name
+                                    h5.fw-bolder Vestido Longo em Crochê
+                                    // Product price
+                                    | R$40.00
+                            // Product actions
+                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
+                                .text-center
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='6') Add to cart
+                    .col.mb-5
+                        .card.h-100
+                            // Product image
+                            img.card-img-top(src='/assets/007.jpeg', alt='...')
+                            // Product details
+                            .card-body.p-4
+                                .text-center
+                                    // Product name
+                                    h5.fw-bolder Porta copo em Crochê
+                                    // Product price
+                                    | R$40.00
+                            // Product actions
+                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
+                                .text-center
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='7') Add to cart
+                    .col.mb-5
+                        .card.h-100
+                            // Product image
+                            img.card-img-top(src='/assets/007.jpeg', alt='...')
+                            // Product details
+                            .card-body.p-4
+                                .text-center
+                                    // Product name
+                                    h5.fw-bolder Sousplat Tradicional em Crochê
+                                    // Product price
+                                    | R$40.00
+                            // Product actions
+                            .card-footer.p-4.pt-0.border-top-0.bg-transparent
+                                .text-center
+                                    a.btn.btn-outline-dark.mt-auto.add-to-cart(href='#' data-id='8') Add to cart
 
         // Footer
         footer.py-5.bg-dark
@@ -233,3 +182,4 @@ html(lang='pt-br')
 
         // Core theme JS
         script(src='js/scripts.js')
+        script(src='js/cart.js')
