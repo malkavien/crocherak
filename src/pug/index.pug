@@ -50,9 +50,12 @@ html(lang='pt-br')
                             span#cart-count.badge.bg-dark.text-white.ms-1.rounded-pill 0
 
         // Header
-        header.py-5(style="background-color: #F48CA7;")
+        header.py-5(style="background-color: #F48CA7; position: relative;")
             .container.px-4.px-lg-5.my-5
-                .text-center.text-white
+                <!-- Imagem transparente (adicione esta linha) -->
+                img(src='assets/header.png', alt='Logo Rak Crôche', style="position: absolute; opacity: 0.2; max-height: 250%; top: 50%; left: 50%; transform: translate(-50%, -50%);")
+                
+                .text-center.text-white(style="position: relative; z-index: 1;")
                     h1.display-4.fw-bolder Rak Crôche
                     p.lead.fw-normal.mb-0(style="color: #FFF0F5") Presenteie quem mais você ama com peças feitas em crochê 🧶💝
 
