@@ -1,0 +1,21 @@
+doctype html
+html(lang='pt-br')
+  head
+    title= 'Tapete Redondo em Crochê' + ' - Rak Crôche'
+    link(rel='stylesheet', href='/css/styles.css')
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body
+    .container.mt-5
+      a.btn.btn-secondary(href='/index.html') ⬅ Voltar para a Loja
+
+      .row
+        .col-md-6
+          img.img-fluid(src='/assets/003.jpeg', alt='Tapete Redondo em Crochê')
+        .col-md-6
+          h1= 'Tapete Redondo em Crochê'
+          h3.text-danger R$ 40.00
+          p.mt-3= 'Tapete Redondo em Crochê'
+          button.btn.btn-primary.mt-3(onclick=`addToCart(${1})`) Adicionar ao Carrinho
+
+    script(src='/js/cart.js')
