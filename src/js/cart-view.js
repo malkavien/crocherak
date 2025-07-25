@@ -10,6 +10,7 @@ const productList = [
 ];
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let frete = 0;
 
 function updateCartCount() {
   const cartCount = document.getElementById('cart-count');
@@ -43,15 +44,12 @@ function renderCart() {
     cartMap[id] = (cartMap[id] || 0) + 1;
   });
 
-  let total = 0;
-
   for (const id in cartMap) {
     const product = productList.find(p => p.id === id);
     if (!product) continue;
 
     const quantity = cartMap[id];
     const subtotal = product.price * quantity;
-    total += subtotal;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -64,9 +62,7 @@ function renderCart() {
     cartContainer.appendChild(tr);
   }
 
-  cartTotal.textContent = total.toFixed(2).replace('.', ',');
-
-  // Os event listeners dos inputs e botões devem ser adicionados aqui:
+  // Adiciona listeners aos inputs e botões
   document.querySelectorAll('.quantity-input').forEach(input => {
     input.addEventListener('change', e => {
       const id = e.target.dataset.id;
@@ -83,18 +79,70 @@ function renderCart() {
       updateQuantity(id, 0);
     });
   });
+
+  atualizarTotalComFrete();
 }
 
-// Aqui registramos os event listeners fixos fora da renderização
+function calcularSubtotal() {
+  const rows = document.querySelectorAll('#cart-items tr');
+  let subtotal = 0;
+
+  rows.forEach(row => {
+    const totalCell = row.querySelector('td:nth-child(4)');
+    if (totalCell) {
+      const valor = parseFloat(totalCell.textContent.replace('R$', '').replace(',', '.'));
+      subtotal += valor;
+    }
+  });
+
+  return subtotal;
+}
+
+function atualizarTotalComFrete() {
+  const cartTotal = document.getElementById('cart-total');
+  const subtotal = calcularSubtotal();
+  const total = subtotal + frete;
+  if (cartTotal) {
+    cartTotal.textContent = total.toFixed(2).replace('.', ',');
+  }
+}
+
+function calcularFrete() {
+  const cepInput = document.getElementById('cep');
+  const freteDisplay = document.getElementById('frete-value');
+  if (!cepInput || !freteDisplay) return;
+
+  const cep = cepInput.value.replace(/\D/g, '');
+
+  if (cep.length !== 8) {
+    frete = 0;
+    freteDisplay.textContent = 'CEP inválido';
+    atualizarTotalComFrete();
+    return;
+  }
+
+  // Frete fixo de exemplo
+  frete = 15.00;
+
+  freteDisplay.textContent = `R$ ${frete.toFixed(2).replace('.', ',')}`;
+  atualizarTotalComFrete();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderCart();
   updateCartCount();
+
+  const cepInput = document.getElementById('cep');
+  if (cepInput) {
+    cepInput.addEventListener('blur', calcularFrete);
+  }
 
   document.getElementById('clear-cart').addEventListener('click', () => {
     cart = [];
     localStorage.removeItem('cart');
     renderCart();
     updateCartCount();
+    calcularFrete();
   });
 
   document.getElementById('checkout').addEventListener('click', () => {
@@ -122,9 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
       message += `- ${product.name} - ${quantity} unidade${quantity > 1 ? 's' : ''} (R$ ${product.price.toFixed(2).replace('.', ',')}) = R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
     }
 
-    message += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}%0A%0APor favor, aguardo a confirmação do pedido.%0AObrigado!`;
+    message += `%0AFrete: R$ ${frete.toFixed(2).replace('.', ',')}`;
+    message += `%0ATotal com frete: R$ ${(total + frete).toFixed(2).replace('.', ',')}%0A%0APor favor, aguardo a confirmação do pedido.%0AObrigado!`;
 
-    const phone = '5584998354251'; // seu telefone aqui
+    const phone = '5584998354251';
     const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
 
     window.open(whatsappUrl, '_blank');
@@ -132,5 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('cart');
     renderCart();
     updateCartCount();
+    calcularFrete();
   });
 });

@@ -29,8 +29,17 @@ html(lang='pt-br')
         tbody#cart-items
           //- Os itens vão ser inseridos via JavaScript
 
+      .row.mt-4
+      .col-md-6
+        label(for='cep') CEP para cálculo do frete:
+        input#cep.form-control(type='text', placeholder='Digite o CEP', maxlength='9')
+
+      .col-md-6
+        label Frete:
+        p#frete-value.fw-bold R$ 0,00
+
       .text-end.fw-bold.fs-5.mt-3
-        | Total: R$
+        | Total (com frete): R$
         span#cart-total 0,00
 
       .text-end.mt-4
